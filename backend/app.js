@@ -10,6 +10,7 @@ const { login, createUser } = require('./controllers/users');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleError = require('./middlewares/handleError');
+const handleCors = require('./middlewares/handleCors');
 
 const app = express();
 app.use(cookieParser());
@@ -20,6 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.use(handleCors);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
