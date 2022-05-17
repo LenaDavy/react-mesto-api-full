@@ -1,10 +1,7 @@
 const allowedCors = [
-  'mestoru.nomoredomains.xy',
-  'www.mestoru.nomoredomains.xy',
+  'mestoru.nomoredomains.xyz',
   'http://mestoru.nomoredomains.xyz/',
-  'http://www.mestoru.nomoredomains.xyz/',
   'https://mestoru.nomoredomains.xyz/',
-  'https://www.mestoru.nomoredomains.xyz/',
   'localhost:3000',
   'http://localhost:3000/',
 ];
