@@ -5,10 +5,10 @@ const Unauthorized = require('../errors/Unauthorized');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  let { token } = req.headers;
-    if (!token || !token.startsWith('Bearer ')) {
+  let { Authorization } = req.headers;
+    if (!Authorization || !Authorization.startsWith('Bearer ')) {
       return next(new Unauthorized('Необходима авторизация'));
-    } token = jwt.replace('Bearer ', '');
+    } token = Authorization.replace('Bearer ', '');
       try {
         token = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
       } catch (err) {
