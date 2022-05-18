@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
+const handleCors = require('./middlewares/handleCors');
 const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const auth = require('./middlewares/auth');
@@ -14,6 +15,7 @@ const handleError = require('./middlewares/handleError');
 
 const app = express();
 app.use(cors());
+app.use(handleCors);
 app.use(cookieParser());
 const PORT = 3000;
 
