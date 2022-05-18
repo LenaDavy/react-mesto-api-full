@@ -1,4 +1,5 @@
 const allowedCors = [
+  'mestoru.nomoredomains.xyz',
   'http://mestoru.nomoredomains.xyz',
   'https://mestoru.nomoredomains.xyz',
   'localhost:3000',
