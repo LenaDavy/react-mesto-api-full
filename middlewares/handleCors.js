@@ -12,7 +12,7 @@ const handleCors = (req, res, next) => {
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
-    return res.end();
+    res.header('Access-Control-Allow-Credentials', true);
   }
 
   if (method === 'OPTIONS') {
