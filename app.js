@@ -14,8 +14,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleError = require('./middlewares/handleError');
 
 const app = express();
-app.use(cors());
 app.use(handleCors);
+app.use(cors());
 app.use(cookieParser());
 const PORT = 3000;
 
