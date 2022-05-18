@@ -51,12 +51,13 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             throw new Unauthorized('Неправильная почта или пароль');
           } const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-          res.cookie('jwt', token, { maxAge: 3600000 * 7 }).send({
+          res.send({
             name: user.name,
             about: user.about,
             avatar: user.avatar,
             email: user.email,
             _id: user._id,
+            token: token,
           });
         });
     })
