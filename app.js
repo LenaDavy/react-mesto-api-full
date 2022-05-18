@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -10,10 +11,9 @@ const { login, createUser } = require('./controllers/users');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleError = require('./middlewares/handleError');
-const handleCors = require('./middlewares/handleCors');
 
 const app = express();
-app.use(handleCors);
+app.use(cors);
 app.use(cookieParser());
 const PORT = 3000;
 
