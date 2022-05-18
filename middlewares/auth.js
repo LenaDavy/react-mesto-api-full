@@ -14,5 +14,5 @@ module.exports = (req, res, next) => {
   } catch (err) {
     return next(NotFoundError('Объект не найден'));
   } req.user = payload;
-  next();
+  return next();
 };
