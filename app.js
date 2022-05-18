@@ -13,13 +13,13 @@ const handleError = require('./middlewares/handleError');
 const handleCors = require('./middlewares/handleCors');
 
 const app = express();
+app.use(handleCors);
 app.use(cookieParser());
 const PORT = 3000;
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(handleCors);
 app.use(requestLogger);
 
 
