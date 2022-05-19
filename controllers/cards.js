@@ -24,7 +24,7 @@ module.exports.getCards = (req, res, next) => {
     .then((cards) => {
       if (!cards) {
         return next(new NotFoundError('Объект не найден'));
-      } return res.send({ data: cards });
+      } return res.send(cards);
     })
     .catch(next);
 };

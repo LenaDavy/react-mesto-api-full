@@ -121,7 +121,7 @@ module.exports.swapAvatar = (req, res, next) => {
     .then((updatedUser) => {
       if (!updatedUser) {
         return next(new NotFoundError('Объект не найден'));
-      } return res.send({ data: updatedUser });
+      } return res.send(updatedUser);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
