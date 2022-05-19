@@ -57,7 +57,7 @@ module.exports.login = (req, res, next) => {
             avatar: user.avatar,
             email: user.email,
             _id: user._id,
-            token: token,
+            token,
           });
         });
     })
@@ -106,7 +106,7 @@ module.exports.swapProfile = (req, res, next) => {
     .then((updatedUser) => {
       if (!updatedUser) {
         return next(new NotFoundError('Объект не найден'));
-      } return res.send({ data: updatedUser });
+      } return res.send(updatedUser);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
