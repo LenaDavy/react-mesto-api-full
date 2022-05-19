@@ -4,9 +4,8 @@ const NotFoundError = require('../errors/NotFoundError');
 const Forbidden = require('../errors/Forbidden');
 
 module.exports.createCard = (req, res, next) => {
-  const { name, link } = req.body;
-  const owner = req.user._id;
-  Card.create({ name, link, owner })
+  const { name, link, _id } = req.body;
+  Card.create({ name, link, _id })
     .then((newCard) => {
       if (!newCard) {
         return next(new NotFoundError('Объект не найден'));
