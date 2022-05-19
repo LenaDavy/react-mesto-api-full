@@ -9,7 +9,7 @@ module.exports.createCard = (req, res, next) => {
     .then((newCard) => {
       if (!newCard) {
         return next(new NotFoundError('Объект не найден'));
-      } return res.send(newCard);
+      } return res.send({ newCard });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
