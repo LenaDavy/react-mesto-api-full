@@ -73,9 +73,9 @@ module.exports.getMe = (req, res, next) => {
         name: user.name,
         about: user.about,
         avatar: user.avatar,
+        password: String(user.password),
         email: user.email,
         _id: user._id,
-        password: user.password,
       });
     })
     .catch(next);
