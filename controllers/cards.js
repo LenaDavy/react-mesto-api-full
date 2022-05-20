@@ -1,11 +1,12 @@
 const Card = require('../models/card');
+const User = require('../models/user');
 const ValidationError = require('../errors/ValidationError');
 const NotFoundError = require('../errors/NotFoundError');
 const Forbidden = require('../errors/Forbidden');
 
 module.exports.createCard = (req, res, next) => {
   const { name, link, owner } = req.body;
-  Card.create({ name, link, owner: [owner] })
+  Card.create({ name, link, owner: User[owner] })
     .then((newCard) => {
       if (!newCard) {
         return next(new NotFoundError('Объект не найден'));
