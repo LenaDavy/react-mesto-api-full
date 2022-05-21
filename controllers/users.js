@@ -5,7 +5,7 @@ const ValidationError = require('../errors/ValidationError');
 const Unauthorized = require('../errors/Unauthorized');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictingRequest = require('../errors/ConflictingRequest');
-const User = require('../models/card');
+const User = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
