@@ -5,7 +5,7 @@ const Forbidden = require('../errors/Forbidden');
 
 module.exports.createCard = (req, res, next) => {
   const { name, link, owner } = req.body;
-  Card.create({ name, link, owner: { _id: owner._id, email: owner.email, name: owner.name } })
+  Card.create({ name, link, owner: { _id: owner } })
     .then((newCard) => {
       if (!newCard) {
         return next(new NotFoundError('Объект не найден'));
