@@ -19,7 +19,8 @@ const cardSchema = new mongoose.Schema({
     maxlength: 30,
   },
   likes: {
-    type: String,
+    type: Array,
+    default: [],
   },
   createdAt: {
     type: Date,
