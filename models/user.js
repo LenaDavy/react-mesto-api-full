@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  likes: {
+    type: Array,
+    default: [],
+  },
   password: {
     type: String,
   },
