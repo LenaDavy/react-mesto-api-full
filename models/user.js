@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
+  _id: Schema.Types.ObjectId,
   name: {
     type: String,
     minlength: 2,

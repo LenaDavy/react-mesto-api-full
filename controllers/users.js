@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -20,7 +21,12 @@ module.exports.createUser = (req, res, next) => {
       } return bcrypt.hash(password, 10);
     })
     .then((hash) => User.create({
-      name, about, avatar, email, password: hash,
+      _id: new mongoose.Types.ObjectId(),
+      name,
+      about,
+      avatar,
+      email,
+      password: hash,
     }))
     .then((newUser) => {
       if (!newUser) {
