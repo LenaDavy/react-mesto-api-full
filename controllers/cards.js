@@ -52,7 +52,7 @@ module.exports.putCardLike = (req, res, next) => {
     .then((cards) => {
       if (cards == null) {
         throw new NotFoundError('Объект не найден');
-      } res.send({ data: cards });
+      } res.send({ cards });
     })
     .catch(next);
 };
