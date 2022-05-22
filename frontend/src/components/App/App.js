@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUserData, setСurrentUserData] = React.useState({ name: '', about: '', avatar: '', email: '', _id: '', password: '' });
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -28,7 +28,7 @@ function App() {
   const [isOpenTooltip, setIsOpenTooltip] = React.useState(false);
   const [tooltipName, setTooltipName]  = React.useState('');
   const history = useHistory();
-  const token = localStorage.getItem('token');
+  let token = localStorage.getItem('token');
   
   const handleChangeInputFormSignUp = (event) => { 
     const { name, value } = event.target;
@@ -53,13 +53,14 @@ function App() {
     setSelectedCard(null)
   };
 
+
   React.useEffect(() => {
     api.getUserInfo(token) 
       .then((data) => {setСurrentUserData({name: data.name, about: data.about, avatar: data.avatar, email: data.email, _id: data._id.toString(), password: data.password }); })
       .catch(err => {console.log(`Ошибка авторизации пользователя: ${err}`)});
         
     api.getInitialCards(token) 
-      .then((data) => {console.log(data); setCards(data)}) 
+      .then((data) => {setCards(data.reverse())}) 
       .catch(err => console.log(`Ошибка загрузки карточек: ${err}`))
 
   }, [loggedIn]); 
