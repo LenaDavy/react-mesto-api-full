@@ -44,7 +44,7 @@ module.exports.deleteCardById = (req, res, next) => {
 };
 
 module.exports.putCardLike = (req, res) => {
-  res.send(req);
+  res.send({ req });
 };
 
 module.exports.deleteCardLike = (req, res, next) => {
