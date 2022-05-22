@@ -43,8 +43,18 @@ module.exports.deleteCardById = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.putCardLike = (req, res) => {
-  res.send({ req });
+module.exports.putCardLike = (req, res, next) => {
+  Card.findByIdAndUpdate(
+    req.params.cardId,
+    { $addToSet: { likes: req.user._id } },
+    { new: true },
+  )
+    .then((cards) => {
+      if (cards == null) {
+        throw new NotFoundError('Объект не найден');
+      } res.send({ data: cards });
+    })
+    .catch(next);
 };
 
 module.exports.deleteCardLike = (req, res, next) => {
