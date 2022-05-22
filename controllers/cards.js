@@ -60,7 +60,7 @@ module.exports.putCardLike = (req, res, next) => {
 module.exports.deleteCardLike = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
-    { $pull: { likes: req.user._id } },
+    { $pull: { likes: String(req.user._id) } },
     { new: true },
   )
     .then((cards) => {
