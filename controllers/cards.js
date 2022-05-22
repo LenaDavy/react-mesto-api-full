@@ -37,7 +37,7 @@ module.exports.deleteCardById = (req, res, next) => {
         throw new Forbidden('Доступ ограничен');
       } return Card.findByIdAndRemove(req.params.cardId)
         .then((removedCard) => {
-          res.send({ data: removedCard });
+          res.send({ removedCard });
         });
     })
     .catch(next);
@@ -66,7 +66,7 @@ module.exports.deleteCardLike = (req, res, next) => {
     .then((cards) => {
       if (cards == null) {
         throw new NotFoundError('Объект не найден');
-      } res.send({ data: cards });
+      } res.send({ cards });
     })
     .catch(next);
 };
