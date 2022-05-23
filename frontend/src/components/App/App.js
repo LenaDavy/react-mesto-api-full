@@ -63,7 +63,7 @@ function App() {
       .then((data) => {setCards(data.reverse())}) 
       .catch(err => console.log(`Ошибка загрузки карточек: ${err}`))
 
-  }, [loggedIn]); 
+  }, [token, loggedIn]); 
 
 
   function handleSubmitFormSignUp(evt) {
@@ -73,7 +73,7 @@ function App() {
       if(res) {setTooltipName('success'); setIsOpenTooltip(true); history.push('/signin')} 
       else {setTooltipName('fail'); setIsOpenTooltip(true)}
     })
-    .catch(err => {setTooltipName('fail'); console.log(`Ошибка регистрации пользователя: ${err}`)})
+    .catch(err => {setTooltipName('fail'); setIsOpenTooltip(true); console.log(`Ошибка регистрации пользователя: ${err}`)})
   };
  
   
@@ -87,7 +87,7 @@ function App() {
         history.push('/') 
       } else {setTooltipName('fail'); setIsOpenTooltip(true)} 
     }) 
-    .catch((err) => {setTooltipName('fail'); console.log(`Ошибка авторизации пользователя: ${err}`)}) 
+    .catch((err) => {setTooltipName('fail'); setIsOpenTooltip(true); console.log(`Ошибка авторизации пользователя: ${err}`)}) 
   };
 
 
